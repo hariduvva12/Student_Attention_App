@@ -15,19 +15,19 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Flask session configuration
-app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = SECRET_KEY = "e4b3f0e8d5a74e8c9f6c47d2c3fa6b1c6e34dfd3765d4dcb5a1bfae091a3d5e6"
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # MongoDB Configuration
-MONGO_URI = os.getenv("MONGO_URI")
+MONGO_URI = "mongodb+srv://hariduvva12:Myflaskapp@myflaskapp.tmmol.mongodb.net/student_attention?retryWrites=true&w=majority&appName=MyflaskApp"
 client = MongoClient(MONGO_URI)
 db = client["student_attention"]
 users_collection = db["users"]
 collection = db["attention_data"]
 
 # Configure Gemini API
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = "AIzaSyA5mRhX0PNMM5aQjkaDDYjwMHTsADUfeTE"
 genai.configure(api_key=GEMINI_API_KEY)
 
 EMOTION_LABELS = {
