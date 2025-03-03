@@ -63,12 +63,16 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         user = users_collection.find_one({"username": username})
-        if user and bcrypt.checkpw(password.encode("utf-8"), user["password"]):
+        
+        if user and bcrypt.checkpw(password.encode("utf-8"), user["password"].encode("utf-8")):
             session["logged_in"] = True
             session["username"] = username
             return redirect(url_for("index"))
-        return "Invalid Credentials", 401
+        
+        return "Invalid Credentials", 401  # Return 401 Unauthorized for invalid login
+
     return render_template("login.html")
 
 @app.route("/logout")
