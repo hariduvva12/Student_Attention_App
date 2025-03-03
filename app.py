@@ -15,7 +15,7 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Flask session configuration
-app.secret_key = "supersecretkey"
+app.secret_key = os.getenv("SECRET_KEY")
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
