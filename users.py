@@ -12,5 +12,5 @@ def add_user(username, password):
     print(f"User {username} added successfully!")
 
 # Add users manually
-add_user("admin", "hariduvva")
+add_user("hariduvva", "admin")
 
